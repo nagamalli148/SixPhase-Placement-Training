@@ -1,0 +1,36 @@
+#include<stdio.h>
+int main()
+{
+    int arr[5][5];
+    int n=5;
+    int row,col,value=1;
+    int left,right,upper,lower;
+    left=0;
+    right=n-1;
+    upper=0;
+    lower=n-1;
+    while(1)
+    {
+        for(col=left;col<=right && value<=n*n;col++)
+            arr[upper][col]=value++;
+        upper++;
+        for(row=upper;row<=lower && value<=n*n;row++)
+            arr[row][right]=value++;
+        right--;
+        for(col=right;col>=left && value<=n*n;col--)
+            arr[lower][col]=value++;
+        lower--;
+        for(row=lower;row>=upper && value<=n*n;row--)
+            arr[row][left]=value++;
+        left++;
+        if(value>n*n)
+            break;
+    }
+    for(row=0;row<n;row++)
+    {
+        for(col=0;col<n;col++)
+            printf("%d ",arr[row][col]);
+        printf("\n");
+    }
+    return 0;
+}
