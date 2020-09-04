@@ -1,0 +1,201 @@
+#include <stdio.h>
+
+int main()
+{
+    int i,j,n;
+    scanf("%d",&n);
+    int a=n;
+    for(i=1;i<=n;i++) //outer loop
+    {
+        for(j=0;j<=a;j++){
+            printf("%d",i); //0 1 2 3->
+        }
+        a--;
+        printf("\n");
+    }
+    return 0;
+}
+
+1111
+222
+33
+
+without extra variable
+j<n+1 inplace of a
+
+
+2)Syntax Error:
+//Switch won't Accept floating numbers
+
+given:
+
+#include<stdio.h>
+int main(){
+float x=1.1;
+switch(x)
+{
+case 1:pf("choice 1");
+break;
+default:pf("invalid");
+break;
+}
+}
+
+corrected code:
+
+#include<stdio.h>
+int main(){
+int x=1.1;
+switch(x)  //int(x)
+{
+case 1:pf("choice 1");
+break;
+default:pf("invalid");
+break;
+}
+}
+
+3)
+logical errors:
+
+for(i=0;i<len;i++) (given i-i-1)
+sum=sum+a[i] (given without adding)
+
+4)
+binary to decimal
+
+<screenshot>
+
+5)
+logical error:
+
+#include<stdio.h>
+int main(void)
+{
+printf("This is a \"buggy\" program\n");
+return 0;
+}
+
+output:This is a "buggy" Program
+
+6)
+Prime or Not function
+Given code:
+
+int isprime(int num){
+//write code
+for(int i=2;i<num;i++){
+if(num%i==0)
+return 0;
+}
+return 1;
+}
+int main(){
+int n;
+scanf("%d",&n);
+if(isprime(n)){
+printf("Yes");
+}
+else{
+printf("No");
+}
+}
+
+How to find sqaure root of a number without using inbuilt
+Ans:Newton's square root law
+
+6)
+
+functional
+int sum_of_N_Natural_Numbers(int n){
+return ((n*(n+1))/2);
+}
+
+7)
+
+Given two numbers A and B.The task is to count how many numbers in the interval [A,B] have an odd number of divisors
+
+Input:A=1,B=10
+output:3
+
+Input:A=5,B=15;
+output:1
+
+count=divisor(i)%2?1:0;
+
+screenshots
+
+8)Fibonacci
+0 1 1 2 3 
+
+int fib(int n){
+//code
+
+if(n<2)
+return n; //nth number 
+return fib(n-1)+fib(n-2);
+}
+int main(){
+int n;
+scanf("%d",&n);
+printf("%d",fib(n));
+return 0;
+}
+memoisation:
+dynamic programming...storing the previous output and doing computations.
+
+// Online C compiler to run C online.
+// Write C code in this online editor and run it.
+
+#include <stdio.h>
+
+int main()
+{
+    int i,j,n;
+    scanf("%d",&n);
+    int a=n;
+    for(i=1;i<=n;i++) //outer loop
+    {
+        for(j=0;j<a;j++){
+            printf("%d",i); //0 1 2 3->
+        }
+        a--;
+        printf("\n");
+    }
+    return 0;
+}
+
+5
+11111
+2222
+333
+44
+5
+
+**************************************
+Armstrong num:
+
+#include <stdio.h>
+int main() {
+    int num, originalNum, remainder, result = 0;
+    printf("Enter a three-digit integer: ");
+    scanf("%d", &num);
+    originalNum = num;
+
+    while (originalNum != 0) {
+       // remainder contains the last digit
+        remainder = originalNum % 10;
+        
+       result += remainder * remainder * remainder;
+        
+       // removing last digit from the orignal number
+       originalNum /= 10;
+    }
+
+    if (result == num)
+        printf("%d is an Armstrong number.", num);
+    else
+        printf("%d is not an Armstrong number.", num);
+
+    return 0;
+}
