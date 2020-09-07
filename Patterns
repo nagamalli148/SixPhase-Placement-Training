@@ -94,8 +94,55 @@ output:
 1
 
 
+*****************************************************************************************************
+
+#include<stdio.h>
+int main()
+{
+    int item[]={7,	0,	1,	2,	0,	3,	0,	4,	2,	3,	0,	3,	2,	1,	2,	0};
+    int n=16,cache_size=3;
+    int cache_miss=0,index;
+    int cache[3],cache_index[3];//garbage values
+    //initialize both the arrays
+    for(index=0;index<cache_size;index++)
+    {
+        cache[index]=-1;
+        cache_index[index]=-1;
+    }
+    for(index=0;index<n;index++)//take each element
+    {
+        int position,flag=0;
+        for(position=0;position<cache_size;position++)//check if it is present in cache array
+        {
+            if(item[index]==cache[position])//cache hit
+            {
+                    flag=1;
+                    cache_index[position]=index;//update the index
+                    break;
+            }
+        }
+        if(flag==0)//cache miss
+        {
+            int min=cache_index[0],min_index=0;
+            cache_miss++;
+            for(position=0;position<cache_size;position++)
+            {
+                if(cache_index[position]<min)
+                {
+                    min=cache_index[position];
+                    min_index=position;
+                }
+            }
+            cache[min_index]=item[index];
+            cache_index[min_index]=index;
+        }
+    }
 
 
+    printf("%d",cache_miss);
+    return 0;
+}
+Output :11
 
 
 
