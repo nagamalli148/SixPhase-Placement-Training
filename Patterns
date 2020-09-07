@@ -1,0 +1,106 @@
+#include<stdio.h>
+int main()
+{
+    int rows=5,i,j,k;
+    for(i=rows;i>=1;i--)
+    {
+        for(j=1;j<=rows;j++)//left
+        {
+            if(j<=i)
+                printf("%d",j);
+            else
+                printf("*");
+        }
+        for(j=rows;j>=1;j--)//right
+        {
+            if(i>=j)
+                printf("%d",j);
+            else
+                printf("*");
+        }
+        printf("\n");
+    }
+    return 0;
+}
+
+
+output:
+
+1234554321
+1234**4321
+123****321
+12******21
+1********1
+
+
+***************************************************************
+
+#include<stdio.h>
+int main()
+{
+    int n=5,line,count;
+    for(line=1;line<=n;line++)
+	{
+	    for(count=1;count<=line;count++)
+        {
+            printf("%d",line);
+            if(count!=line)
+                printf("*");
+        }
+	    /*
+	    for(count=1;count<=line;count++)
+        {
+            //print * before the number
+            if(count!=1)
+                printf("*");
+            printf("%d",line);
+        }
+        */
+        printf("\n");
+	}
+    for(line=n;line>=1;line--)
+	{
+	    for(count=1;count<=line;count++)
+        {
+            printf("%d",line);
+            if(count!=line)
+                printf("*");
+        }
+	    /*
+	    for(count=1;count<=line;count++)
+        {
+            //print * before the number
+            if(count!=1)
+                printf("*");
+            printf("%d",line);
+        }
+        */
+        printf("\n");
+	}
+    return 0;
+}
+
+output:
+
+1
+2*2
+3*3*3
+4*4*4*4
+5*5*5*5*5
+5*5*5*5*5
+4*4*4*4
+3*3*3
+2*2
+1
+
+
+
+
+
+
+
+
+
+
+
+
