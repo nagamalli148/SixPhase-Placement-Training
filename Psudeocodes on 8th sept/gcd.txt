@@ -1,0 +1,20 @@
+#include<stdio.h>
+int main()
+{
+    int dividend=32,divisor=7,remainder;
+    while(1)
+    {
+        remainder=dividend%divisor;
+        if(remainder==0)
+        {
+            printf("GCD:%d",divisor);
+            break;
+        }
+        else
+        {
+            dividend=divisor;
+            divisor=remainder;
+        }
+    }
+    return 0;
+}

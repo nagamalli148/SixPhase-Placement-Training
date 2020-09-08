@@ -1,0 +1,53 @@
+#include<stdio.h>
+typedef struct date
+{
+    int dd;
+    int mm;
+    int yy;
+}Date;
+int leapYear(int year)
+{
+    if((year%100!=0 && year%4==0)||year%400==0)
+        return 1;
+    else
+        return 0;
+}
+int dateDifference(Date date1,Date date2)
+{
+    int res1,res2;
+    int month[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
+    int completedDays=0,index;
+    /*
+    number of days from 01 01 0000 to 13 03 2000
+    01 01 0000 to 31 12 1999=> 2000*365+leap years
+    01 01 2000 to 13 03 2000=> jan(31)+feb(28+1)+march(13)
+                                            => all days in jan and feb
+
+    number of days from 01 01 0000 to 13 03 2000
+    01 01 0000 to 31 12 1999=> date1.yy*365+(date1.yy/4-date1.yy/100+date1.yy/400)
+    01 01 2000 to 13 03 2000=> jan(31)+feb(28+1)+date1.dd
+    */
+    for(index=1;index<=date1.mm-1;index++)
+    {
+        completedDays = completedDays+month[index];
+        if(index==2 && leapYear(date1.yy))
+            completedDays++;
+    }
+    res1=date1.yy*365 + (date1.yy/4-date1.yy/100+date1.yy/400) + (completedDays) + date1.dd;
+    for(index=1,completedDays=0;index<=date2.mm-1;index++)
+    {
+        completedDays = completedDays+month[index];
+        if(index==2 && leapYear(date2.yy))
+            completedDays++;
+    }
+    res2=date2.yy*365 + (date2.yy/4-date2.yy/100+date2.yy/400) + (completedDays) + date2.dd;
+    return res2-res1;
+}
+int main()
+{
+    Date date1,date2;
+    scanf("%d %d %d",&date1.dd,&date1.mm,&date1.yy);
+    scanf("%d %d %d",&date2.dd,&date2.mm,&date2.yy);
+    printf("%d",dateDifference(date1,date2));
+    return 0;
+}

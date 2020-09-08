@@ -1,0 +1,23 @@
+#include<stdio.h>
+int main()
+{
+    int num=46;
+    int odd=0,even=0,result;
+    int mask=1,count;
+    for(count=1;mask<=num;count++)
+    {
+        if((num&mask)!=0)
+        {
+            if(count%2!=0)
+                odd=odd|mask;
+            else
+                even=even|mask;
+        }
+        mask=mask<<1;
+    }
+    odd=odd<<1;
+    even=even>>1;
+    result=odd|even;
+    printf("%d",result);
+    return 0;
+}
